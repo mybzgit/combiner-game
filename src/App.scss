@@ -1,0 +1,64 @@
+$field-size: 500px;
+$cell-size: calc($field-size / 6);
+$item-size: calc($field-size / 6 - 5px);
+
+$generator-mark-color: #5755FE;
+
+.game-title {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.board {
+  display: table;
+  border-collapse: collapse;
+  background-color: #fcfcfc;
+  width: $field-size;
+  height: $field-size;
+  border-radius: 8px;
+
+  .board-row {
+    display: table-row;
+  }
+}
+
+.cell {
+  width: $cell-size;
+  height: $cell-size;
+  border: 1px solid grey;
+  display: table-cell;
+  place-content: center;
+}
+
+@mixin content-style {
+  width: $item-size;
+  height: $item-size;
+  margin: auto;
+  display: flex;
+  place-content: center;
+  place-items: center;
+
+  svg {
+    width: $item-size;
+    height: $item-size;
+  }
+}
+
+.generator {
+  position: relative;
+  @include content-style;
+
+  .mark {
+    width: 15px;
+    height: 15px;
+    border-radius: 20%;
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    background-color: $generator-mark-color;
+  }
+}
+
+.item {
+  @include content-style;
+}

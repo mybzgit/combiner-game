@@ -1,0 +1,7 @@
+{
+  "jsxSingleQuote": true,
+  "printWidth": 70,
+  "quoteProps": "consistent",
+  "semi": false,
+  "singleQuote": true
+}
