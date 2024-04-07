@@ -2,7 +2,8 @@ $field-size: 500px;
 $cell-size: calc($field-size / 6);
 $item-size: calc($field-size / 6 - 5px);
 
-$generator-mark-color: #5755FE;
+$board-bg: #ffffff;
+$generator-mark-color: #5755fe;
 
 .game-title {
   text-align: center;
@@ -12,7 +13,7 @@ $generator-mark-color: #5755FE;
 .board {
   display: table;
   border-collapse: collapse;
-  background-color: #fcfcfc;
+  background-color: $board-bg;
   width: $field-size;
   height: $field-size;
   border-radius: 8px;
@@ -61,4 +62,42 @@ $generator-mark-color: #5755FE;
 
 .item {
   @include content-style;
+}
+
+.timer {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 2px solid gray;
+  border-radius: 50%;
+  background:#655;
+  background-image: linear-gradient(
+    to right,
+    transparent 50%,
+    yellowgreen 0
+  );
+  color: transparent;
+
+  .progress {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    border-radius: 0 100% 100% 0 / 50%;
+    background-color: inherit;
+    transform-origin: left;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(0.5turn);
+  }
+}
+@keyframes bg {
+  50% {
+    background: yellowgreen;
+  }
 }
