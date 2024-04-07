@@ -11,7 +11,7 @@ const cellArray = generateCells()
 const rows = Array.from('123456')
 
 export default function Board() {
-  const { board, generate } = useContext(GameContext)
+  const { board, generate, resetGenerator } = useContext(GameContext)
 
   return (
     <div className='board'>
@@ -28,6 +28,7 @@ export default function Board() {
                   ('toGenerate' in render!.content ? (
                     <Generator
                       generate={generate}
+                      resetGenerator={resetGenerator}
                       position={c}
                       item={render?.content as GeneratorType}
                     />

@@ -18,6 +18,8 @@ export function generateBoardCells() {
   }
   cells[5].content = {
     id: 'horseGenerator',
+    maxItems: 5,
+    leftItems: 5,
     toGenerate: combineGroup['horseGenerator'].items,
     image: combineGroup['horseGenerator'].images[0]
   } as GeneratorType
@@ -30,6 +32,8 @@ export function generateBoardCells() {
 
   cells[11].content = {
     id: 'dotGenerator',
+    maxItems: 3, 
+    leftItems: 3,
     toGenerate: combineGroup['dotGenerator'].items,
     image: combineGroup['dotGenerator'].images[0]
   } as GeneratorType

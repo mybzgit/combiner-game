@@ -7,6 +7,8 @@ export type ItemType = {
 
 export type GeneratorType = {
   id: string
+  leftItems: number
+  maxItems: number
   toGenerate: string[]
   image: JSX.Element,
 }

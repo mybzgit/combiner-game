@@ -57,13 +57,13 @@ const GameContextProvider = ({ children }: PropsWithChildren) => {
               const temp = { ...startCell!.content } as ItemType
               const generatorId = temp.generator
               if (
-                endCell!.content.id == startCell!.content.id &&
-                startCell!.content.id ==
+                endCell!.content.id == startCell!.content!.id &&
+                startCell!.content!.id ==
                   combineGroup[generatorId].items.slice(-1)[0]
               )
                 return draft
               else {
-                if (endCell!.content.id == startCell!.content.id) {
+                if (endCell!.content.id == startCell!.content!.id) {
                   startCell!.content = null
                   const nextIndex = getNext(
                     temp.id,
@@ -113,6 +113,23 @@ const GameContextProvider = ({ children }: PropsWithChildren) => {
             image: combineGroup[generatorId].images[0],
           } as ItemType
         }
+        const generatorCell = draft.find(
+          (c) => c.content?.id === generatorId,
+        )
+        const generator = generatorCell!.content as GeneratorType
+        generator.leftItems -= 1
+      }),
+    )
+  }
+
+  const handleResetGenerator = (generatorId: string) => {
+    setBoard(
+      produce((draft) => {
+        const generatorCell = draft.find(
+          (c) => c.content?.id === generatorId,
+        )
+        const generator = generatorCell!.content as GeneratorType
+        generator.leftItems = generator.maxItems
       }),
     )
   }
@@ -121,6 +138,7 @@ const GameContextProvider = ({ children }: PropsWithChildren) => {
     board,
     move: handleMove,
     generate: handleGenerate,
+    resetGenerator: handleResetGenerator,
   }
 
   return (
