@@ -15,7 +15,11 @@ export default function Cell({ children, position }: Props) {
       position: CellType
       type: 'generator' | 'item'
     }) => {
-      move(item.type, item.position, position)
+      if (
+        item.position[0] != position[0] ||
+        item.position[1] != position[1]
+      )
+        move(item.type, item.position, position)
     },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
